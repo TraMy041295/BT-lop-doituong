@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" height="250" width="600" style="border: 1px solid;" ></canvas>
+    <h2 id="thongtin1" ></h2>
+    <h2 id="thongtin2" ></h2>
+    <button onclick="draw()" >Draw</button>
+    <button onclick="information()" >Thông tin</button>
+    <button onclick="creatRect ()" >Tạo thông tin</button>
+</body>
+    <script>
+        let ctx = document.getElementById("canvas").getContext("2d");
+        class Rectangle {
+            height;
+            width;
+            constructor(height, width){
+                this.height = height;
+                this.width = width;
+            }
+            getHeight(){
+                return this.height
+            }
+            getWidth(){
+                return this.width;
+            }
+            getPeri(){
+                return 2 * (this.height + this.width);
+            }
+            getArea(){
+                return this.height*this.width;
+            }
+            Draw(ctx){
+                ctx.clearRect(0,0,600,300)
+                ctx.fillStyle = "yellow"
+                ctx.fillRect(50, 50, this.height, this.width)
+            }
+        }
+        let rec;
+        function creatRect(){
+            let width = +prompt("nhập chiều rộng....");
+            let height = +prompt("nhập chiều dài....");
+            rec = new Rectangle(height , width);
+        }
+        function draw(){
+            rec.Draw(ctx);
+        }
+        function information(){
+            document.getElementById("thongtin1").innerHTML = "chiều dài là :" + rec.getHeight() + "; chiều rộng là :" + rec.getWidth()
+            document.getElementById("thongtin2").innerHTML = "chu vi là :" + rec.getPeri() + "; diện tích là :" + rec.getArea()
+        }
+
+    </script>
+</html>
