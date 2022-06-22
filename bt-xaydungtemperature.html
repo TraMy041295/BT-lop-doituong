@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="information()" >Nhập độ C</button>
+    <button onclick="Chuyendoi()" >Chuyển đổi nhiệt độ</button>
+</body>
+<script>
+    class Temperature {
+        C ;
+        constructor(C){
+            this.C = C
+        }
+        getC(){
+            return this.C;
+        }
+        getF(){
+            let F = (9/5 * this.C + 32);
+            return F
+        }
+        getKevin(){
+            let T = this.C + 273.5 
+            return T
+        }
+    }
+    let temperature ;
+    function information(){
+        let C = +prompt("Nhập nhiệt độ ( độ C) vào đây... ")
+        temperature = new Temperature(C); 
+    }
+    function Chuyendoi(){
+        alert(temperature.getC() + " độ C = " + temperature.getF() + " độ F" );
+        alert(temperature.getC() + " độ C = " + temperature.getKevin() + " độ Kevin");
+    }
+
+</script>
+</html>
